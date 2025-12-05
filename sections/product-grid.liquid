@@ -1,0 +1,174 @@
+<section class="product-grid-section">
+  <div class="container">
+    <h2>{{ section.settings.title }}</h2>
+    
+    <div class="product-grid">
+      {% for product in collection.products limit: section.settings.products_limit %}
+        <div class="product-card">
+          <div class="product-image">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.title }}">
+            {% endif %}
+            {% if product.compare_at_price > product.price %}
+              <span class="badge">Promo</span>
+            {% endif %}
+          </div>
+          <div class="product-info">
+            <p class="product-vendor">{{ product.vendor }}</p>
+            <h3>{{ product.title }}</h3>
+            <p class="product-type">{{ product.type }}</p>
+            <div class="product-price">
+              <span class="price">{{ product.price | money }}</span>
+              {% if product.compare_at_price > product.price %}
+                <span class="compare-price">{{ product.compare_at_price | money }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-grid-section {
+    padding: 2rem 1rem;
+    background-color: white;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .product-grid-section h2 {
+    font-size: 1.875rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .product-card {
+    border: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+  
+  .product-image {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+  }
+  
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  
+  .product-card:hover .product-image img {
+    transform: scale(1.1);
+  }
+  
+  .badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background-color: #6a8f53;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    z-index: 10;
+  }
+  
+  .product-info {
+    padding: 1rem;
+  }
+  
+  .product-vendor {
+    font-size: 0.75rem;
+    color: #999;
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .product-info h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    transition: color 0.2s;
+  }
+  
+  .product-card:hover h3 {
+    color: #6a8f53;
+  }
+  
+  .product-type {
+    font-size: 0.75rem;
+    color: #999;
+    margin: 0 0 0.75rem 0;
+  }
+  
+  .product-price {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .price {
+    font-weight: 700;
+    font-size: 1.125rem;
+  }
+  
+  .compare-price {
+    font-size: 0.875rem;
+    color: #999;
+    text-decoration: line-through;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Products to Show",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid"
+    }
+  ]
+}
+{% endschema %}

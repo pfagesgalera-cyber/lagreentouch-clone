@@ -1,0 +1,36 @@
+<div class="announcement-bar">
+  <p>{{ section.settings.announcement_text }}</p>
+</div>
+
+<style>
+  .announcement-bar {
+    background-color: #040404;
+    color: white;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .announcement-bar p {
+    margin: 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement Text",
+      "default": "Anticipez vos cadeaux et faites-vous livrer juste avant Noël en programmant votre livraison"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar"
+    }
+  ]
+}
+{% endschema %}

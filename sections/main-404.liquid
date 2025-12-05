@@ -1,0 +1,57 @@
+<section class="page-404">
+  <div class="container">
+    <h1>404</h1>
+    <h2>{{ 'general.404.title' | t }}</h2>
+    <p>{{ 'general.404.subtext' | t }}</p>
+    <a href="/" class="btn btn-primary">{{ 'general.continue_shopping' | t }}</a>
+  </div>
+</section>
+
+<style>
+  .page-404 {
+    padding: 4rem 1rem;
+    background-color: #f8f6f4;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .page-404 .container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .page-404 h1 {
+    font-size: 6rem;
+    font-weight: 300;
+    color: #6a8f53;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .page-404 h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin: 1rem 0;
+    color: #333;
+  }
+
+  .page-404 p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "404 Page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "404 Page"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,265 @@
+<section class="why-us-section">
+  <div class="container">
+    <h2>{{ section.settings.title }}</h2>
+    {% if section.settings.subtitle_link != blank %}
+      <p class="section-link"><a href="{{ section.settings.subtitle_link }}">{{ section.settings.subtitle_text }}</a></p>
+    {% endif %}
+
+    <div class="why-us-grid">
+      {% for block in section.blocks %}
+        <div class="why-us-card" {{ block.shopify_attributes }}>
+          <div class="why-us-image">
+            {% if block.settings.image %}
+              <img src="{{ block.settings.image | img_url: '400x300', crop: 'center' }}" alt="{{ block.settings.title }}" loading="lazy">
+            {% else %}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.description }}</p>
+          {% if block.settings.link_text != blank %}
+            <a href="{{ block.settings.link }}" class="why-us-link">{{ block.settings.link_text }}</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-us-section {
+    padding: 2rem 1rem;
+    background-color: white;
+  }
+
+  @media (min-width: 768px) {
+    .why-us-section {
+      padding: 3rem 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .why-us-section {
+      padding: 4rem 1rem;
+    }
+  }
+
+  .why-us-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .why-us-section h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: #333;
+  }
+
+  @media (min-width: 640px) {
+    .why-us-section h2 {
+      font-size: 1.875rem;
+    }
+  }
+
+  .section-link {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-link {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .section-link a {
+    color: #6a8f53;
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+
+  .section-link a:hover {
+    text-decoration: underline;
+  }
+
+  .why-us-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .why-us-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .why-us-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .why-us-card {
+    text-align: center;
+    transition: transform 0.3s;
+  }
+
+  .why-us-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .why-us-image {
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
+  }
+
+  .why-us-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: all 0.3s;
+  }
+
+  @media (min-width: 640px) {
+    .why-us-image img {
+      height: 200px;
+    }
+  }
+
+  .why-us-card:hover .why-us-image img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .why-us-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+
+  .why-us-card p {
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .why-us-link {
+    color: #6a8f53;
+    text-decoration: none;
+    font-size: 0.875rem;
+    display: inline-block;
+  }
+
+  .why-us-link:hover {
+    text-decoration: underline;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Why Us",
+  "tag": "section",
+  "class": "section-why-us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Pourquoi acheter des plantes chez nous ?"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_text",
+      "label": "Subtitle Link Text",
+      "default": "Plus d'infos"
+    },
+    {
+      "type": "url",
+      "id": "subtitle_link",
+      "label": "Subtitle Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Entreprise familiale"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "La Green Touch est née d'une volonté de combiner une passion pour la décoration végétale et le désir d'entreprendre afin de proposer une expérience végétale unique accessible à tous !"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "Notre histoire"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Us",
+      "blocks": [
+        {
+          "type": "reason",
+          "settings": {
+            "title": "Entreprise familiale",
+            "description": "La Green Touch est née d'une volonté de combiner une passion pour la décoration végétale et le désir d'entreprendre afin de proposer une expérience végétale unique accessible à tous !",
+            "link_text": "Notre histoire"
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "Expertise",
+            "description": "Notre équipe s'engage à vous partager son savoir-faire, vous démontrer son expertise en sélectionnant des plantes de qualité et originales, un accompagnement et une aide sur l'entretien.",
+            "link_text": "Nos garanties"
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "En direct producteur",
+            "description": "Il n'y a aucun intermédiaire entre nos producteurs, sélectionnés par nos. Une meilleure qualité et de fraîcheur pour vos plantes, Un impact carbone réduit.",
+            "link_text": "Plus d'info"
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "Des prix justes",
+            "description": "En commandant chez un même producteur plusieurs produits et plantes, vous bénéficierez du meilleur prix sur le marché.",
+            "link_text": "Plus d'info"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

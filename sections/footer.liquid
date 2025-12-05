@@ -1,0 +1,223 @@
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-info-bar">
+      <p>Livraison sécurisée de plantes d'intérieur et extérieur en France et en Europe. Gratuite à partir de 80€ d'achat</p>
+      <a href="/pages/livraison">Plus d'infos</a>
+    </div>
+    
+    <div class="footer-content">
+      <div class="footer-column">
+        <h4>Livraison de plantes</h4>
+        <ul>
+          <li><a href="/collections/idees-cadeaux-noel">Idées cadeaux Noël</a></li>
+          <li><a href="/collections/terrarium">Livraison de terrarium et kokedama</a></li>
+          <li><a href="/collections/kit-diy">Livraison de kit DIY terrarium</a></li>
+          <li><a href="/collections/plantes-interieur">Livraison de plantes d'intérieur</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Entretien de plantes, conseils et astuces</h4>
+        <ul>
+          <li><a href="/pages/guide-entretien">Guide d'entretien de plantes</a></li>
+          <li><a href="/blogs/green-blog">Le Green Blog : Conseils et astuces</a></li>
+          <li><a href="/pages/entretien-terrarium">Entretien terrarium</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Une entreprise familiale française</h4>
+        <ul>
+          <li><a href="/pages/producteurs">Nos producteurs en direct</a></li>
+          <li><a href="/pages/concept">Notre concept</a></li>
+          <li><a href="/pages/engagements">Nos engagements</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Bons plans Plantes</h4>
+        <p>Inscrivez-vous à notre newsletter pour recevoir nos offres exclusives.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Votre e-mail" required>
+          <button type="submit">→</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="payment-methods">
+        {% for payment_method in shop.enabled_payment_methods %}
+          <img src="{{ payment_method | payment_method_image_url: 'original' }}" alt="{{ payment_method }}">
+        {% endfor %}
+      </div>
+      
+      <p class="copyright">{{ section.settings.copyright_text }}</p>
+      
+      <div class="footer-links">
+        <a href="/collections/idees-cadeaux">Idées cadeaux et créations végétales</a>
+        <a href="/collections/plantes-interieur">Plantes d'intérieur</a>
+        <a href="/collections/kit-terrarium">Kit terrarium</a>
+        <a href="/collections/plante-pot">Plante + pot</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: #f8f6f4;
+    padding: 2rem 1rem;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-info-bar {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+  }
+  
+  .footer-info-bar a {
+    color: #6a8f53;
+    text-decoration: none;
+  }
+  
+  .footer-info-bar a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .footer-column h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-column li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-column a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+  
+  .footer-column a:hover {
+    color: #6a8f53;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .newsletter-form input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+  
+  .newsletter-form button {
+    background-color: #6a8f53;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s;
+  }
+  
+  .newsletter-form button:hover {
+    background-color: #5c7847;
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid #ddd;
+    padding-top: 2rem;
+    text-align: center;
+  }
+  
+  .payment-methods {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .payment-methods img {
+    height: 30px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  
+  .payment-methods img:hover {
+    opacity: 1;
+  }
+  
+  .copyright {
+    font-size: 0.75rem;
+    color: #999;
+    margin: 1rem 0;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+  }
+  
+  .footer-links a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .footer-links a:hover {
+    color: #6a8f53;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© 2025 La Green Touch. Commerce électronique propulsé par Shopify"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %}

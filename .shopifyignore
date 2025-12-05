@@ -1,0 +1,17 @@
+# Shopify Theme Ignore File
+# Files and directories listed here will not be uploaded to Shopify
+
+.git
+.gitignore
+.DS_Store
+node_modules
+*.log
+*.swp
+*.swo
+*~
+.env
+.env.local
+.vscode
+.idea
+*.md
+!README.md

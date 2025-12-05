@@ -1,0 +1,109 @@
+{
+  "general": {
+    "404": {
+      "title": "Page non trouvée",
+      "subtext": "La page que vous recherchez n'a pas pu être trouvée."
+    },
+    "continue_shopping": "Continuer mes achats",
+    "search": "Rechercher",
+    "no_results": "Aucun résultat pour",
+    "view_all": "Voir tout"
+  },
+  "header": {
+    "menu": "Menu",
+    "search": "Rechercher",
+    "account": "Compte",
+    "cart": "Panier",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "register": "Créer un compte"
+  },
+  "footer": {
+    "copyright": "© 2025 La Green Touch. Commerce électronique propulsé par Shopify",
+    "newsletter_title": "Bons plans Plantes",
+    "newsletter_text": "Inscrivez-vous à notre newsletter pour recevoir nos offres exclusives.",
+    "newsletter_placeholder": "Votre e-mail"
+  },
+  "products": {
+    "add_to_cart": "Ajouter au panier",
+    "price": "Prix",
+    "sold_out": "Rupture de stock",
+    "unavailable": "Non disponible",
+    "quantity": "Quantité",
+    "view_product": "Voir le produit",
+    "from_price": "À partir de",
+    "sale": "Promo",
+    "new": "Nouveau"
+  },
+  "cart": {
+    "title": "Votre Panier",
+    "empty": "Votre panier est vide",
+    "continue_shopping": "Continuer mes achats",
+    "subtotal": "Sous-total",
+    "taxes_and_shipping": "Taxes et frais de livraison calculés à la caisse",
+    "update": "Mettre à jour",
+    "checkout": "Passer la commande",
+    "remove": "Supprimer"
+  },
+  "collection": {
+    "title": "Collection",
+    "products_count": "produits",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "no_products": "Aucun produit dans cette collection"
+  },
+  "customer": {
+    "account": {
+      "title": "Mon compte",
+      "orders": "Mes commandes",
+      "addresses": "Mes adresses",
+      "logout": "Déconnexion"
+    },
+    "login": {
+      "title": "Connexion",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "forgot_password": "Mot de passe oublié ?",
+      "sign_in": "Se connecter",
+      "create_account": "Créer un compte"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "submit": "Créer mon compte"
+    }
+  },
+  "sections": {
+    "gift_ideas": {
+      "title": "Toutes nos idées cadeaux pour Noël"
+    },
+    "categories": {
+      "title": "Spécialiste en plantes d'intérieur & créations végétales"
+    },
+    "workshop": {
+      "title": "Ateliers sur Bordeaux"
+    },
+    "delivery": {
+      "title": "Livraison sécurisée de plantes en France et en Europe"
+    },
+    "why_us": {
+      "title": "Pourquoi acheter des plantes chez nous ?"
+    },
+    "blog": {
+      "title": "Le Green blog"
+    },
+    "plant_chooser": {
+      "title": "Choisir sa plante"
+    },
+    "testimonials": {
+      "title": "Plus de 80 000 clients nous ont déjà fait",
+      "subtitle": "confiance, pourquoi pas vous ?"
+    },
+    "press": {
+      "title": "La presse en parle !"
+    }
+  }
+}

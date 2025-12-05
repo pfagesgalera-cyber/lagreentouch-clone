@@ -1,0 +1,172 @@
+/* Responsive Design */
+
+/* Mobile First - Extra Small (xs) */
+@media (max-width: 640px) {
+  .hidden-xs {
+    display: none;
+  }
+  
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  section {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small (sm) */
+@media (min-width: 641px) and (max-width: 768px) {
+  .hidden-sm {
+    display: none;
+  }
+  
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Medium (md) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hidden-md {
+    display: none;
+  }
+  
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large (lg) */
+@media (min-width: 1025px) {
+  .hidden-lg {
+    display: none;
+  }
+}
+
+/* Flexbox Responsive */
+.flex-responsive {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .flex-responsive {
+    flex-direction: row;
+  }
+}
+
+/* Image Responsive */
+.img-responsive {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Text Responsive */
+@media (max-width: 640px) {
+  .text-responsive-sm {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .text-responsive-md {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .text-responsive-lg {
+    font-size: 1.125rem;
+  }
+}
+
+/* Padding Responsive */
+@media (max-width: 640px) {
+  .p-responsive {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 641px) {
+  .p-responsive {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .p-responsive {
+    padding: 2rem;
+  }
+}
+
+/* Margin Responsive */
+@media (max-width: 640px) {
+  .m-responsive {
+    margin: 1rem;
+  }
+}
+
+@media (min-width: 641px) {
+  .m-responsive {
+    margin: 1.5rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .m-responsive {
+    margin: 2rem;
+  }
+}
+
+/* Gap Responsive */
+@media (max-width: 640px) {
+  .gap-responsive {
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 641px) {
+  .gap-responsive {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .gap-responsive {
+    gap: 2rem;
+  }
+}
+
+/* Touch Friendly */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+  
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+}

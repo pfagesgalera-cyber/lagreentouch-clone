@@ -1,0 +1,390 @@
+{
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {
+        "announcement_text": "Anticipez vos cadeaux et faites-vous livrer juste avant Noël en programmant votre livraison"
+      }
+    },
+    "promo": {
+      "type": "promo-bar",
+      "settings": {
+        "promo_text": "Nouvelle collection de Plante + pot : un cadeau Noël · Livraison offerte dès 60€ d'achat"
+      }
+    },
+    "hero": {
+      "type": "hero",
+      "settings": {},
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "title": "Commandez plusieurs plantes",
+            "description": "chez un même producteur"
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "title": "Un seul colis utiles",
+            "description": "Diminution des frais de gestion & logistique"
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "title": "Economies",
+            "description": "Essentiel à impact environnemental réduit"
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "title": "Livraison sécurisée",
+            "description": "en 3 à 4 jours ouvrés"
+          }
+        }
+      },
+      "block_order": ["feature_1", "feature_2", "feature_3", "feature_4"]
+    },
+    "gift_ideas": {
+      "type": "gift-ideas",
+      "settings": {
+        "title": "Toutes nos idées cadeaux pour Noël",
+        "promo_bg_color": "#c9a882",
+        "promo_title": "Plantes & créations végétales",
+        "promo_description": "<p>Découvrez nos <strong>idées cadeaux green pour Noël</strong> une sélection unique de <strong>plantes d'intérieur, terrariums, kokedamas</strong> et <strong>créations végétales artisanales</strong>.</p>",
+        "promo_button_text": "Voir tout"
+      },
+      "blocks": {
+        "product_1": {
+          "type": "product_card",
+          "settings": {
+            "badge_text": "Promo Noël",
+            "brand_name": "La Green Touch",
+            "product_name": "Duo de Tillandsia socle Led Edition",
+            "product_size": "Idée Cadeau · ⌀25cm ~ ⌀11cm",
+            "price": "84,00 €",
+            "compare_price": "94,00 €"
+          }
+        },
+        "product_2": {
+          "type": "product_card",
+          "settings": {
+            "badge_text": "Promo Noël",
+            "brand_name": "Kindhome",
+            "product_name": "Kit Terrarium DIY - SAMA",
+            "product_size": "Kit · ⌀27cm ~ ⌀27cm",
+            "price": "À partir de 69,00 €",
+            "compare_price": "75,00 €"
+          }
+        },
+        "product_3": {
+          "type": "product_card",
+          "settings": {
+            "badge_text": "Promo Noël",
+            "brand_name": "Federer",
+            "product_name": "Kokedama - Asparagus",
+            "product_size": "Kokedama · ⌀30cm ~ ⌀20cm",
+            "price": "46,00 €",
+            "compare_price": "51,00 €"
+          }
+        }
+      },
+      "block_order": ["product_1", "product_2", "product_3"]
+    },
+    "categories": {
+      "type": "categories-grid",
+      "settings": {
+        "title": "Spécialiste en plantes d'intérieur & créations végétales"
+      },
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "title": "Plantes d'intérieur notre sélection",
+            "large": false
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "title": "Créations végétales : Terrarium, Kokedama, Hydroculture",
+            "large": true
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": {
+            "title": "Très grande plante",
+            "large": false
+          }
+        },
+        "cat_4": {
+          "type": "category",
+          "settings": {
+            "title": "Plante + pot inclus",
+            "large": false
+          }
+        },
+        "cat_5": {
+          "type": "category",
+          "settings": {
+            "title": "Coffrets de plantes",
+            "large": false
+          }
+        }
+      },
+      "block_order": ["cat_1", "cat_2", "cat_3", "cat_4", "cat_5"]
+    },
+    "workshop": {
+      "type": "workshop",
+      "settings": {
+        "title": "Ateliers sur Bordeaux",
+        "description": "<p>Après plusieurs années sur Paris et banlieue parisienne, <strong>La Green Touch</strong> est désormais présente aujourd'hui sur <strong>Bordeaux</strong> pour vous proposer des <strong>ateliers DIY autour du végétal</strong> : Terrarium, kokedama, Hydroculture, rempotage...</p>",
+        "button_text": "Plus d'infos"
+      }
+    },
+    "delivery": {
+      "type": "delivery-info",
+      "settings": {
+        "title": "Livraison sécurisée de plantes en France et en Europe",
+        "cta_text": "Edition Noël · Pour programmer votre livraison, rendez-vous en page panier et sélectionnez la semaine que vous souhaitez",
+        "button_text": "Tout savoir sur la livraison"
+      }
+    },
+    "why_us": {
+      "type": "why-us",
+      "settings": {
+        "title": "Pourquoi acheter des plantes chez nous ?",
+        "subtitle_text": "Plus d'infos"
+      },
+      "blocks": {
+        "reason_1": {
+          "type": "reason",
+          "settings": {
+            "title": "Entreprise familiale",
+            "description": "La Green Touch est née d'une volonté de combiner une passion pour la décoration végétale et le désir d'entreprendre afin de proposer une expérience végétale unique accessible à tous !",
+            "link_text": "Notre histoire"
+          }
+        },
+        "reason_2": {
+          "type": "reason",
+          "settings": {
+            "title": "Expertise",
+            "description": "Notre équipe s'engage à vous partager son savoir-faire, vous démontrer son expertise en sélectionnant des plantes de qualité et originales, un accompagnement et une aide sur l'entretien.",
+            "link_text": "Nos garanties"
+          }
+        },
+        "reason_3": {
+          "type": "reason",
+          "settings": {
+            "title": "En direct producteur",
+            "description": "Il n'y a aucun intermédiaire entre nos producteurs, sélectionnés par nos. Une meilleure qualité et de fraîcheur pour vos plantes, Un impact carbone réduit.",
+            "link_text": "Plus d'info"
+          }
+        },
+        "reason_4": {
+          "type": "reason",
+          "settings": {
+            "title": "Des prix justes",
+            "description": "En commandant chez un même producteur plusieurs produits et plantes, vous bénéficierez du meilleur prix sur le marché.",
+            "link_text": "Plus d'info"
+          }
+        }
+      },
+      "block_order": ["reason_1", "reason_2", "reason_3", "reason_4"]
+    },
+    "blog": {
+      "type": "blog-posts",
+      "settings": {
+        "title": "Le Green blog",
+        "view_all_text": "Voir tout",
+        "posts_limit": 3
+      },
+      "blocks": {
+        "article_1": {
+          "type": "article",
+          "settings": {
+            "title": "Pourquoi offrir une plante à Noël ?",
+            "excerpt": "Un cadeau vivant, durable et porteur de sens : voici 7 bonnes raisons d'offrir une plante (ou une création végétale) pour les fêtes...",
+            "author": "Laetitia Tavares",
+            "date": "1 novembre 2025"
+          }
+        },
+        "article_2": {
+          "type": "article",
+          "settings": {
+            "title": "10 idées cadeaux green pour un Noël éco-responsable",
+            "excerpt": "Offre du vivant, du durable et du beau : voici 10 idées cadeaux végétales éthiques, artisanales et prêtes à livrer partout en France...",
+            "author": "Laetitia Tavares",
+            "date": "29 octobre 2025"
+          }
+        },
+        "article_3": {
+          "type": "article",
+          "settings": {
+            "title": "Tout savoir sur l'origine du kokedama",
+            "excerpt": "Le kokedama est bien plus qu'une simple plante décorative : c'est une véritable œuvre d'art végétal qui puise ses racines dans la tradition japonaise...",
+            "author": "Laetitia Tavares",
+            "date": "24 septembre 2025"
+          }
+        }
+      },
+      "block_order": ["article_1", "article_2", "article_3"]
+    },
+    "plant_chooser": {
+      "type": "plant-chooser",
+      "settings": {
+        "title": "Choisir sa plante"
+      },
+      "blocks": {
+        "chooser_1": {
+          "type": "category",
+          "settings": {
+            "title": "Une plante à offrir ?",
+            "link_1_text": "Plantes facile d'entretien",
+            "link_2_text": "Plantes dépolluantes",
+            "link_3_text": "Plantes Petsfriendly",
+            "link_4_text": "Cactus & succulentes",
+            "link_5_text": "Plantes sans lumière"
+          }
+        },
+        "chooser_2": {
+          "type": "category",
+          "settings": {
+            "title": "Décorer mon intérieur ?",
+            "link_1_text": "Ma cuisine",
+            "link_2_text": "Mon salon",
+            "link_3_text": "Ma chambre",
+            "link_4_text": "Salle de bain",
+            "link_5_text": "Au bureau",
+            "link_6_text": "Extérieur"
+          }
+        },
+        "chooser_3": {
+          "type": "category",
+          "settings": {
+            "title": "Une plante pour l'extérieur ?",
+            "link_1_text": "Mon jardin",
+            "link_2_text": "Ma terrasse",
+            "link_3_text": "Mon balcon"
+          }
+        }
+      },
+      "block_order": ["chooser_1", "chooser_2", "chooser_3"]
+    },
+    "plant_care": {
+      "type": "plant-care-cta",
+      "settings": {
+        "title": "Tout savoir sur ma plante d'intérieur",
+        "description": "<p>Comment <strong>entretenir ma plante</strong> ? Quand <strong>rempoter</strong> ? Quand <strong>arroser</strong> ? Si vous vous posez toutes ces questions, vous êtes au bon endroit !</p>",
+        "button_text": "Guide d'entretien"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "title": "Plus de 80 000 clients nous ont déjà fait",
+        "subtitle": "confiance, pourquoi pas vous ?"
+      },
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Je suis très contente de ma commande reçue (emballage soigné, cache pot arrivé sans bobo, la plante en très grande forme). Essayer, c'est l'adopter, j'en suis à ma deuxième commande. Laissez votre cœur aller vers de belles plantes...",
+            "author": "ANNE-CLAUDE",
+            "author_title": "client certifié"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Service impeccable ! Les plantes sont arrivées en parfait état, très bien emballées. La qualité est au rendez-vous et l'équipe est très réactive. Je recommande vivement !",
+            "author": "MARIE-LOUISE",
+            "author_title": "client certifié"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Excellente expérience d'achat. Les terrariums sont magnifiques et la livraison a été rapide. C'est un plaisir de commander chez La Green Touch !",
+            "author": "PHILIPPE",
+            "author_title": "client certifié"
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
+    },
+    "press": {
+      "type": "press",
+      "settings": {
+        "title": "La presse en parle !"
+      },
+      "blocks": {
+        "logo_1": { "type": "logo", "settings": { "name": "Press 1" } },
+        "logo_2": { "type": "logo", "settings": { "name": "Press 2" } },
+        "logo_3": { "type": "logo", "settings": { "name": "Press 3" } },
+        "logo_4": { "type": "logo", "settings": { "name": "Press 4" } },
+        "logo_5": { "type": "logo", "settings": { "name": "Press 5" } },
+        "logo_6": { "type": "logo", "settings": { "name": "Press 6" } }
+      },
+      "block_order": ["logo_1", "logo_2", "logo_3", "logo_4", "logo_5", "logo_6"]
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {
+        "banner_title": "Plantes d'intérieur",
+        "banner_text": "Découvrez notre sélection de plantes vertes, facile d'entretien et dépollantes. Livraison gratuite dès 80€ d'achat",
+        "banner_button_text": "Voir toutes nos plantes d'intérieur"
+      },
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "title": "+ de 80 000 clients",
+            "description": "nous ont déjà fait confiance"
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "title": "+ de 900 variétés",
+            "description": "En direct producteur"
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "title": "Livraison gratuite",
+            "description": "à partir de 80€ d'achat"
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "title": "Idées cadeaux",
+            "description": "Uniques et durables"
+          }
+        }
+      },
+      "block_order": ["feature_1", "feature_2", "feature_3", "feature_4"]
+    }
+  },
+  "order": [
+    "announcement",
+    "promo",
+    "hero",
+    "gift_ideas",
+    "categories",
+    "workshop",
+    "delivery",
+    "why_us",
+    "blog",
+    "plant_chooser",
+    "plant_care",
+    "testimonials",
+    "press",
+    "final_cta"
+  ]
+}

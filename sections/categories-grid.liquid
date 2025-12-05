@@ -1,0 +1,259 @@
+<section class="categories-section">
+  <div class="container">
+    <h2>{{ section.settings.title }}</h2>
+
+    <div class="categories-grid">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link }}" class="category-card {% if block.settings.large %}category-large{% endif %}" {{ block.shopify_attributes }}>
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | img_url: '600x800', crop: 'center' }}" alt="{{ block.settings.title }}" loading="lazy">
+          {% else %}
+            {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          <div class="category-overlay"></div>
+          <div class="category-content">
+            <h3>{{ block.settings.title }}</h3>
+            <span class="btn btn-outline-white">{{ block.settings.button_text | default: 'Voir' }}</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .categories-section {
+    padding: 2rem 1rem;
+    background-color: #f8f6f4;
+  }
+
+  @media (min-width: 768px) {
+    .categories-section {
+      padding: 3rem 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .categories-section {
+      padding: 4rem 1rem;
+    }
+  }
+
+  .categories-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .categories-section h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  @media (min-width: 640px) {
+    .categories-section h2 {
+      font-size: 1.875rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .categories-grid {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+  }
+
+  .category-card {
+    position: relative;
+    height: 250px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+  }
+
+  @media (min-width: 640px) {
+    .category-card {
+      height: 320px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .category-large {
+      grid-row: span 2;
+      height: 100%;
+    }
+  }
+
+  .category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  .category-card:hover img {
+    transform: scale(1.1);
+  }
+
+  .category-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    transition: background 0.3s;
+  }
+
+  .category-card:hover .category-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1));
+  }
+
+  .category-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    color: white;
+  }
+
+  @media (min-width: 640px) {
+    .category-content {
+      padding: 1.5rem;
+    }
+  }
+
+  .category-content h3 {
+    font-size: 1.125rem;
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .category-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .category-content .btn-outline-white {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .category-card:hover .btn-outline-white {
+    background-color: white;
+    color: #333;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Categories Grid",
+  "tag": "section",
+  "class": "section-categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Spécialiste en plantes d'intérieur & créations végétales"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Category Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "default": "Plantes d'intérieur"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Voir"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Category Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "large",
+          "label": "Large Card (spans 2 rows)",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Categories Grid",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Plantes d'intérieur notre sélection"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Créations végétales : Terrarium, Kokedama, Hydroculture",
+            "large": true
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Très grande plante"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Plante + pot inclus"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Coffrets de plantes"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

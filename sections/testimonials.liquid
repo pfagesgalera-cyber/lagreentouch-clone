@@ -1,0 +1,310 @@
+<section class="testimonials-section">
+  <div class="container">
+    <h2>{{ section.settings.title }}</h2>
+    <h3>{{ section.settings.subtitle }}</h3>
+
+    <div class="testimonials-carousel" id="testimonialsCarousel">
+      <div class="testimonials-track">
+        {% for block in section.blocks %}
+          <div class="testimonial-slide" {{ block.shopify_attributes }}>
+            <div class="quote-mark">"</div>
+            <p class="testimonial-text">{{ block.settings.text }}</p>
+            <div class="testimonial-stars">
+              {% for i in (1..5) %}
+                <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              {% endfor %}
+            </div>
+            <p class="testimonial-author">{{ block.settings.author }}</p>
+            <p class="testimonial-title">{{ block.settings.author_title }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="testimonials-dots">
+      {% for block in section.blocks %}
+        <button class="dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Témoignage {{ forloop.index }}"></button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    padding: 2rem 1rem;
+    background-color: white;
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-section {
+      padding: 3rem 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonials-section {
+      padding: 4rem 1rem;
+    }
+  }
+
+  .testimonials-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonials-section h2,
+  .testimonials-section h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+    color: #333;
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    .testimonials-section h2,
+    .testimonials-section h3 {
+      font-size: 1.875rem;
+    }
+  }
+
+  .testimonials-section h3 {
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .testimonials-section h3 {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .testimonials-carousel {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .testimonials-track {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  .testimonial-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .quote-mark {
+    font-size: 3rem;
+    color: #e5e5e5;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .quote-mark {
+      font-size: 4rem;
+    }
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+    color: #666;
+    font-style: italic;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .testimonial-text {
+      font-size: 1.125rem;
+    }
+  }
+
+  .testimonial-stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .star-icon {
+    width: 20px;
+    height: 20px;
+    color: #333;
+  }
+
+  .testimonial-author {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .testimonial-title {
+    font-size: 0.75rem;
+    color: #999;
+    margin: 0;
+  }
+
+  .testimonials-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s;
+  }
+
+  .dot.active {
+    width: 32px;
+    background-color: #333;
+  }
+
+  .dot:hover {
+    background-color: #999;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('testimonialsCarousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.testimonials-track');
+    const slides = carousel.querySelectorAll('.testimonial-slide');
+    const dots = carousel.parentElement.querySelectorAll('.dot');
+
+    if (slides.length === 0) return;
+
+    let currentIndex = 0;
+    let autoplayInterval;
+
+    function goToSlide(index) {
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+
+      currentIndex = index;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, 5000);
+    }
+
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        stopAutoplay();
+        goToSlide(index);
+        startAutoplay();
+      });
+    });
+
+    startAutoplay();
+
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section-testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Plus de 80 000 clients nous ont déjà fait"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "confiance, pourquoi pas vous ?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Testimonial Text",
+          "default": "Je suis très contente de ma commande reçue (emballage soigné, cache pot arrivé sans bobo, la plante en très grande forme). Essayer, c'est l'adopter, j'en suis à ma deuxième commande. Laissez votre cœur aller vers de belles plantes..."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "ANNE-CLAUDE"
+        },
+        {
+          "type": "text",
+          "id": "author_title",
+          "label": "Author Title",
+          "default": "client certifié"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "Je suis très contente de ma commande reçue (emballage soigné, cache pot arrivé sans bobo, la plante en très grande forme). Essayer, c'est l'adopter, j'en suis à ma deuxième commande. Laissez votre cœur aller vers de belles plantes...",
+            "author": "ANNE-CLAUDE",
+            "author_title": "client certifié"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "Service impeccable ! Les plantes sont arrivées en parfait état, très bien emballées. La qualité est au rendez-vous et l'équipe est très réactive. Je recommande vivement !",
+            "author": "MARIE-LOUISE",
+            "author_title": "client certifié"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "Excellente expérience d'achat. Les terrariums sont magnifiques et la livraison a été rapide. C'est un plaisir de commander chez La Green Touch !",
+            "author": "PHILIPPE",
+            "author_title": "client certifié"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

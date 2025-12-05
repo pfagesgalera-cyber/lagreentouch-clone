@@ -1,0 +1,36 @@
+<div class="promo-bar">
+  <p>{{ section.settings.promo_text }}</p>
+</div>
+
+<style>
+  .promo-bar {
+    background-color: #f0ede9;
+    color: #040404;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .promo-bar p {
+    margin: 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Promo Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "promo_text",
+      "label": "Promo Text",
+      "default": "Nouvelle collection de Plante + pot : un cadeau Noël · Livraison offerte dès 60€ d'achat"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Bar"
+    }
+  ]
+}
+{% endschema %}

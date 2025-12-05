@@ -1,0 +1,72 @@
+[
+  {
+    "name": "theme",
+    "label": "Theme Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "primary_color",
+        "label": "Primary Color",
+        "default": "#6a8f53"
+      },
+      {
+        "type": "color",
+        "id": "secondary_color",
+        "label": "Secondary Color",
+        "default": "#c9a882"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Typography"
+      },
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading Font",
+        "default": "sans-serif"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body Font",
+        "default": "sans-serif"
+      },
+      {
+        "type": "header",
+        "content": "Header Settings"
+      },
+      {
+        "type": "text",
+        "id": "announcement_text",
+        "label": "Announcement Bar Text",
+        "default": "Anticipez vos cadeaux et faites-vous livrer juste avant Noël en programmant votre livraison"
+      },
+      {
+        "type": "text",
+        "id": "promo_text",
+        "label": "Promo Bar Text",
+        "default": "Nouvelle collection de Plante + pot : un cadeau Noël · Livraison offerte dès 60€ d'achat"
+      },
+      {
+        "type": "header",
+        "content": "Footer Settings"
+      },
+      {
+        "type": "text",
+        "id": "footer_text",
+        "label": "Footer Copyright Text",
+        "default": "© 2025 La Green Touch. Commerce électronique propulsé par Shopify"
+      }
+    ]
+  }
+]

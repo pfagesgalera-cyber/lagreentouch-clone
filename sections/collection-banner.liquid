@@ -1,0 +1,40 @@
+<section class="collection-banner">
+  <div class="banner-content">
+    <h1>{{ collection.title }}</h1>
+    {% if collection.description %}
+      <p>{{ collection.description }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .collection-banner {
+    background: linear-gradient(135deg, #6a8f53 0%, #c9a882 100%);
+    color: white;
+    padding: 4rem 1rem;
+    text-align: center;
+  }
+  
+  .banner-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .banner-content p {
+    font-size: 1.125rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection Banner"
+    }
+  ]
+}
+{% endschema %}

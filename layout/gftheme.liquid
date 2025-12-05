@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ shop.locale }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  
+  {% if canonical_url %}
+    <link rel="canonical" href="{{ canonical_url }}">
+  {% endif %}
+
+  <link rel="preconnect" href="https://cdn.shopify.com">
+  <link rel="dns-prefetch" href="https://cdn.shopify.com">
+  
+  {{ content_for_header }}
+  
+  <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+  <link rel="stylesheet" href="{{ 'responsive.css' | asset_url }}">
+  
+  <style>
+    :root {
+      --primary-color: {{ settings.primary_color }};
+      --secondary-color: {{ settings.secondary_color }};
+      --background-color: {{ settings.background_color }};
+    }
+  </style>
+</head>
+<body>
+  {% section 'announcement-bar' %}
+  {% section 'promo-bar' %}
+  {% section 'header' %}
+  
+  <main id="MainContent" class="content-for-layout">
+    {{ content_for_layout }}
+  </main>
+  
+  {% section 'footer' %}
+  
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+</body>
+</html>

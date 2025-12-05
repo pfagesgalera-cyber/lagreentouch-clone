@@ -1,0 +1,324 @@
+<section class="plant-chooser-section">
+  <div class="container">
+    <h2>{{ section.settings.title }}</h2>
+
+    <div class="chooser-grid">
+      {% for block in section.blocks %}
+        <div class="chooser-card" {{ block.shopify_attributes }}>
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | img_url: '600x800', crop: 'center' }}" alt="{{ block.settings.title }}" loading="lazy">
+          {% else %}
+            {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          <div class="chooser-overlay"></div>
+          <div class="chooser-content">
+            <div class="chooser-header">
+              <h3>{{ block.settings.title }}</h3>
+            </div>
+            <div class="chooser-links">
+              {% if block.settings.link_1_text != blank %}
+                <a href="{{ block.settings.link_1_url }}">{{ block.settings.link_1_text }}</a>
+              {% endif %}
+              {% if block.settings.link_2_text != blank %}
+                <a href="{{ block.settings.link_2_url }}">{{ block.settings.link_2_text }}</a>
+              {% endif %}
+              {% if block.settings.link_3_text != blank %}
+                <a href="{{ block.settings.link_3_url }}">{{ block.settings.link_3_text }}</a>
+              {% endif %}
+              {% if block.settings.link_4_text != blank %}
+                <a href="{{ block.settings.link_4_url }}">{{ block.settings.link_4_text }}</a>
+              {% endif %}
+              {% if block.settings.link_5_text != blank %}
+                <a href="{{ block.settings.link_5_url }}">{{ block.settings.link_5_text }}</a>
+              {% endif %}
+              {% if block.settings.link_6_text != blank %}
+                <a href="{{ block.settings.link_6_url }}">{{ block.settings.link_6_text }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .plant-chooser-section {
+    padding: 2rem 1rem;
+    background-color: white;
+  }
+
+  @media (min-width: 768px) {
+    .plant-chooser-section {
+      padding: 3rem 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .plant-chooser-section {
+      padding: 4rem 1rem;
+    }
+  }
+
+  .plant-chooser-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .plant-chooser-section h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #333;
+  }
+
+  @media (min-width: 640px) {
+    .plant-chooser-section h2 {
+      font-size: 1.875rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .chooser-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .chooser-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .chooser-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .chooser-card {
+    position: relative;
+    height: 350px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  @media (min-width: 640px) {
+    .chooser-card {
+      height: 400px;
+    }
+  }
+
+  .chooser-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  .chooser-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .chooser-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(106, 143, 83, 0.8) 50%, rgba(201, 168, 130, 1) 100%);
+    transition: background 0.3s;
+  }
+
+  .chooser-card:hover .chooser-overlay {
+    background: linear-gradient(to bottom, transparent 0%, rgba(106, 143, 83, 0.9) 50%, rgba(201, 168, 130, 1) 100%);
+  }
+
+  .chooser-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .chooser-content {
+      padding: 1.5rem;
+    }
+  }
+
+  .chooser-header h3 {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    .chooser-header h3 {
+      font-size: 1.25rem;
+    }
+  }
+
+  .chooser-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .chooser-links a {
+    color: white;
+    font-size: 0.75rem;
+    text-decoration: none;
+    transition: transform 0.2s;
+    display: block;
+  }
+
+  @media (min-width: 640px) {
+    .chooser-links a {
+      font-size: 0.875rem;
+    }
+  }
+
+  .chooser-links a:hover {
+    text-decoration: underline;
+    transform: translateX(8px);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Plant Chooser",
+  "tag": "section",
+  "class": "section-plant-chooser",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Choisir sa plante"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "default": "Une plante à offrir ?"
+        },
+        {
+          "type": "text",
+          "id": "link_1_text",
+          "label": "Link 1 Text"
+        },
+        {
+          "type": "url",
+          "id": "link_1_url",
+          "label": "Link 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_2_text",
+          "label": "Link 2 Text"
+        },
+        {
+          "type": "url",
+          "id": "link_2_url",
+          "label": "Link 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_3_text",
+          "label": "Link 3 Text"
+        },
+        {
+          "type": "url",
+          "id": "link_3_url",
+          "label": "Link 3 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_4_text",
+          "label": "Link 4 Text"
+        },
+        {
+          "type": "url",
+          "id": "link_4_url",
+          "label": "Link 4 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_5_text",
+          "label": "Link 5 Text"
+        },
+        {
+          "type": "url",
+          "id": "link_5_url",
+          "label": "Link 5 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_6_text",
+          "label": "Link 6 Text"
+        },
+        {
+          "type": "url",
+          "id": "link_6_url",
+          "label": "Link 6 URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Plant Chooser",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Une plante à offrir ?",
+            "link_1_text": "Plantes facile d'entretien",
+            "link_2_text": "Plantes dépolluantes",
+            "link_3_text": "Plantes Petsfriendly",
+            "link_4_text": "Cactus & succulentes",
+            "link_5_text": "Plantes sans lumière"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Décorer mon intérieur ?",
+            "link_1_text": "Ma cuisine",
+            "link_2_text": "Mon salon",
+            "link_3_text": "Ma chambre",
+            "link_4_text": "Salle de bain",
+            "link_5_text": "Au bureau",
+            "link_6_text": "Extérieur"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Une plante pour l'extérieur ?",
+            "link_1_text": "Mon jardin",
+            "link_2_text": "Ma terrasse",
+            "link_3_text": "Mon balcon"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

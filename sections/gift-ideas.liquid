@@ -1,0 +1,362 @@
+<section class="gift-ideas-section">
+  <div class="container">
+    <h2>{{ section.settings.title }}</h2>
+
+    <div class="gift-ideas-grid">
+      <!-- Promo Card -->
+      <div class="promo-card" style="background-color: {{ section.settings.promo_bg_color }};">
+        <h3>{{ section.settings.promo_title }}</h3>
+        <p>{{ section.settings.promo_description }}</p>
+        <a href="{{ section.settings.promo_link }}" class="btn btn-outline-white">{{ section.settings.promo_button_text }}</a>
+      </div>
+
+      <!-- Product Cards -->
+      {% for block in section.blocks %}
+        {% if block.type == 'product_card' %}
+          <div class="product-card" {{ block.shopify_attributes }}>
+            <div class="product-image">
+              {% if block.settings.badge_text != blank %}
+                <span class="badge">{{ block.settings.badge_text }}</span>
+              {% endif %}
+              {% if block.settings.product_image %}
+                <img src="{{ block.settings.product_image | img_url: '400x500', crop: 'center' }}" alt="{{ block.settings.product_name }}" loading="lazy">
+              {% else %}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            <div class="product-info">
+              <p class="product-brand">{{ block.settings.brand_name }}</p>
+              <h4>{{ block.settings.product_name }}</h4>
+              <p class="product-size">{{ block.settings.product_size }}</p>
+              <div class="product-price">
+                <span class="price">{{ block.settings.price }}</span>
+                {% if block.settings.compare_price != blank %}
+                  <span class="compare-price">{{ block.settings.compare_price }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gift-ideas-section {
+    padding: 2rem 1rem;
+    background-color: white;
+  }
+
+  @media (min-width: 768px) {
+    .gift-ideas-section {
+      padding: 3rem 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gift-ideas-section {
+      padding: 4rem 1rem;
+    }
+  }
+
+  .gift-ideas-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .gift-ideas-section h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  @media (min-width: 640px) {
+    .gift-ideas-section h2 {
+      font-size: 1.875rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .gift-ideas-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .gift-ideas-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gift-ideas-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .promo-card {
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+  }
+
+  @media (min-width: 640px) {
+    .promo-card {
+      padding: 2rem;
+    }
+  }
+
+  .promo-card h3 {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .promo-card h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .promo-card p {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .promo-card strong {
+    font-weight: 600;
+  }
+
+  .btn-outline-white {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .btn-outline-white:hover {
+    background-color: white;
+    color: #c9a882;
+  }
+
+  .gift-ideas-grid .product-card {
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+    background: white;
+  }
+
+  .gift-ideas-grid .product-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .gift-ideas-grid .product-image {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+  }
+
+  @media (min-width: 640px) {
+    .gift-ideas-grid .product-image {
+      height: 250px;
+    }
+  }
+
+  .gift-ideas-grid .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .gift-ideas-grid .product-card:hover .product-image img {
+    transform: scale(1.1);
+  }
+
+  .gift-ideas-grid .badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background-color: #6a8f53;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    z-index: 10;
+  }
+
+  .gift-ideas-grid .product-info {
+    padding: 1rem;
+  }
+
+  .gift-ideas-grid .product-brand {
+    font-size: 0.75rem;
+    color: #999;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .gift-ideas-grid .product-info h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    transition: color 0.2s;
+  }
+
+  .gift-ideas-grid .product-card:hover h4 {
+    color: #6a8f53;
+  }
+
+  .gift-ideas-grid .product-size {
+    font-size: 0.75rem;
+    color: #666;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .gift-ideas-grid .product-price {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .gift-ideas-grid .price {
+    font-weight: 700;
+    font-size: 1.125rem;
+  }
+
+  .gift-ideas-grid .compare-price {
+    font-size: 0.875rem;
+    color: #999;
+    text-decoration: line-through;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Gift Ideas",
+  "tag": "section",
+  "class": "section-gift-ideas",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Toutes nos idées cadeaux pour Noël"
+    },
+    {
+      "type": "header",
+      "content": "Promo Card"
+    },
+    {
+      "type": "color",
+      "id": "promo_bg_color",
+      "label": "Promo Card Background",
+      "default": "#c9a882"
+    },
+    {
+      "type": "text",
+      "id": "promo_title",
+      "label": "Promo Title",
+      "default": "Plantes & créations végétales"
+    },
+    {
+      "type": "richtext",
+      "id": "promo_description",
+      "label": "Promo Description",
+      "default": "<p>Découvrez nos <strong>idées cadeaux green pour Noël</strong> une sélection unique de <strong>plantes d'intérieur, terrariums, kokedamas</strong> et <strong>créations végétales artisanales</strong>.</p>"
+    },
+    {
+      "type": "text",
+      "id": "promo_button_text",
+      "label": "Button Text",
+      "default": "Voir tout"
+    },
+    {
+      "type": "url",
+      "id": "promo_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "Promo Noël"
+        },
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand Name",
+          "default": "La Green Touch"
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name",
+          "default": "Duo de Tillandsia socle Led Edition"
+        },
+        {
+          "type": "text",
+          "id": "product_size",
+          "label": "Product Size/Info",
+          "default": "Idée Cadeau · ⌀25cm ~ ⌀11cm"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "84,00 €"
+        },
+        {
+          "type": "text",
+          "id": "compare_price",
+          "label": "Compare at Price"
+        },
+        {
+          "type": "url",
+          "id": "product_link",
+          "label": "Product Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift Ideas",
+      "blocks": [
+        {
+          "type": "product_card"
+        },
+        {
+          "type": "product_card"
+        },
+        {
+          "type": "product_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

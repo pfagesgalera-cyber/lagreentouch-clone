@@ -1,0 +1,214 @@
+<section class="delivery-section">
+  <div class="container">
+    <h2>{{ section.settings.title }}</h2>
+
+    <div class="delivery-grid">
+      <div class="delivery-image">
+        {% if section.settings.image_left %}
+          <img src="{{ section.settings.image_left | img_url: '800x600', crop: 'center' }}" alt="Packaging" loading="lazy">
+        {% else %}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+
+      <div class="delivery-cta-card">
+        {% if section.settings.image_right %}
+          <img src="{{ section.settings.image_right | img_url: '800x600', crop: 'center' }}" alt="Delivery" loading="lazy">
+        {% else %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+        <div class="delivery-cta-overlay">
+          <div class="delivery-cta-content">
+            <p>{{ section.settings.cta_text }}</p>
+            {% if section.settings.button_text != blank %}
+              <a href="{{ section.settings.button_link }}" class="btn btn-outline-white">{{ section.settings.button_text }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .delivery-section {
+    padding: 2rem 1rem;
+    background-color: #f8f6f4;
+  }
+
+  @media (min-width: 768px) {
+    .delivery-section {
+      padding: 3rem 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .delivery-section {
+      padding: 4rem 1rem;
+    }
+  }
+
+  .delivery-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .delivery-section h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #333;
+  }
+
+  @media (min-width: 640px) {
+    .delivery-section h2 {
+      font-size: 1.875rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .delivery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .delivery-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .delivery-image img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+  }
+
+  @media (min-width: 640px) {
+    .delivery-image img {
+      height: 320px;
+    }
+  }
+
+  .delivery-image img:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .delivery-cta-card {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    height: 240px;
+  }
+
+  @media (min-width: 640px) {
+    .delivery-cta-card {
+      height: 320px;
+    }
+  }
+
+  .delivery-cta-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .delivery-cta-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .delivery-cta-content {
+    text-align: center;
+    color: white;
+    padding: 1rem;
+  }
+
+  .delivery-cta-content p {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 640px) {
+    .delivery-cta-content p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .delivery-section .btn-outline-white {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .delivery-section .btn-outline-white:hover {
+    background-color: white;
+    color: #333;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Delivery Info",
+  "tag": "section",
+  "class": "section-delivery",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Livraison sécurisée de plantes en France et en Europe"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_left",
+      "label": "Left Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right",
+      "label": "Right Image (Background)"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Edition Noël · Pour programmer votre livraison, rendez-vous en page panier et sélectionnez la semaine que vous souhaitez"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Tout savoir sur la livraison"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Delivery Info"
+    }
+  ]
+}
+{% endschema %}
